@@ -1,0 +1,61 @@
+<div id="content" class="group">
+  <section class="board-show group">
+
+    <div {{bind-attr class="isActiveRoute:col-md-6:col-md-4"}}>
+      <div class="list">
+        <section class="card_section unassigned">
+            {{#each todo in unassigned}}
+<div class="cards">
+  <div class="card">
+    <div class="container card_project">
+      <div class="row">
+        <div class="pull-left">
+          <div class="todo_project">{{#link-to "todos.todo" todo class="toggle_link"}}{{todo.project}}{{/link-to}}</div>
+          <div class="todo_task">{{todo.task}}</div>
+          <div><span {{bind-attr class=todo.status_class}}><span class="todo_status">{{todo.status}}</span></span>
+          <span class="assign_btn label label-primary" {{action 'assign' todo}}>&#43;</span></div>
+        </div>
+        <div class="pull-right">
+          <img height="48px;" width="48px;" src="images/anonymous-user-gravatar.png" class="img-rounded ghx-avatar-img" alt="Assignee: toran billups [Administrator]" data-tooltip="Assignee: toran billups [Administrator]">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+            {{/each}}
+        </section>
+      </div>
+    </div>
+
+    <div {{bind-attr class="isActiveRoute:col-md-6:col-md-4"}}>
+      <div class="list">
+        <section class="card_section assigned">
+            {{#each todo in assigned}}
+<div class="cards">
+  <div class="card">
+    <div class="container card_project">
+      <div class="row">
+        <div class="pull-left">
+          <div class="todo_project">{{#link-to "todos.todo" todo class="toggle_link"}}{{todo.project}}{{/link-to}}</div>
+          <div class="todo_task">{{todo.task}}</div>
+          <div><span {{bind-attr class=todo.status_class}}><span class="todo_status">{{todo.status}}</span></span></div>
+        </div>
+        <div class="pull-right">
+          <img height="48px;" width="48px;" src="images/toranb.jpeg" class="img-rounded ghx-avatar-img" alt="Assignee: toran billups [Administrator]" data-tooltip="Assignee: toran billups [Administrator]">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+            {{/each}}
+        </section>
+      </div>
+    </div>
+
+    <div {{bind-attr class=":details_section isActiveRoute:hidden:col-md-4"}}>
+      <div class="list">
+        {{outlet}}
+      </div>
+    </div>
+  </section>
+</div>

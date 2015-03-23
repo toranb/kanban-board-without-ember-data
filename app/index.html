@@ -18,6 +18,17 @@
     {{content-for 'body'}}
 
     <script src="assets/vendor.js"></script>
+    <script>
+      var first =  {id: 1, status_code: 1, project: 'first'};
+      var second = {id: 2, status_code: 1, project: 'second'};
+      var third =  {id: 3, status_code: 1, project: 'third'};
+      var last =   {id: 4, status_code: 2, project: 'last'};
+      var todos = [first, second, third, last];
+      $.fauxjax.new({
+        url: "/api/todos",
+        responseText: todos
+      });
+    </script>
     <script src="assets/kanban.js"></script>
 
     {{content-for 'body-footer'}}
