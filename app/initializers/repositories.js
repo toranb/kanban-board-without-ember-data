@@ -1,12 +1,8 @@
-import TodoRepository from "kanban/repositories/todo";
+import registerWithContainer from "ember-cli-auto-register/register";
 
 export function initialize(container, application) {
-    application.register("repositories:todo", TodoRepository);
+    registerWithContainer("repositories", application);
     application.inject("repositories", "store", "store:main");
-
-    //manually wire up the repository for routes and controllers
-    application.inject("route", "repository", "repositories:todo");
-    application.inject("controller", "repository", "repositories:todo");
 }
 
 export default {
