@@ -1,9 +1,10 @@
 import Ember from "ember";
+import PromiseMixin from "ember-promise/mixins/promise";
 
 export default Ember.Object.extend({
     find: function() {
         var store = this.get("store");
-        return $.getJSON("/api/todos").then(function(response) {
+        return PromiseMixin.xhr("/api/todos").then(function(response) {
             response.forEach(function(data) {
                 store.push("todo", data);
             });
