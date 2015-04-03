@@ -4,6 +4,9 @@
     <div {{bind-attr class="isActiveRoute:col-md-6:col-md-4"}}>
       <div class="list">
         <section class="card_section unassigned">
+          {{#if controller.content.isLoaded}}
+            {{#if controller.content}}
+
             {{#each todo in unassigned}}
 <div class="cards">
   <div class="card">
@@ -23,6 +26,13 @@
   </div>
 </div>
             {{/each}}
+        {{else}}
+          <div class="no-data-found"><h2>No data available</h2></div>
+        {{/if}}
+        {{else}}
+          <div class="loading-gif"><h2>Loading...</h2></div>
+      {{/if}}
+
         </section>
       </div>
     </div>

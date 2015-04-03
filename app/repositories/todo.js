@@ -10,12 +10,14 @@ export default Ember.Object.extend({
     },
     findAll: function() {
         var store = this.get("store");
+        var all = store.find("todo");
         PromiseMixin.xhr("/api/todos").then(function(response) {
             response.forEach(function(data) {
                 store.push("todo", data);
             });
+            all.set('isLoaded', true);
         });
-        return store.find("todo");
+        return all;
     },
     findById: function(id) {
         var store = this.get("store");
