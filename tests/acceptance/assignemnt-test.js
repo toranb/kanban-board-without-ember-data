@@ -118,3 +118,29 @@ test('loading screen shown before xhr resolves with no data', function(assert) {
       assert.equal(no_data.text(), "No data available");
   });
 });
+
+test('detail loading screen shown before xhr resolves with valid data', function(assert) {
+  stubXhrWithTodos(json);
+  visit('/todo/1');
+  Ember.run(function() {
+      var loading = find(".loading-details-gif");
+      assert.equal(loading.text(), "Loading details...");
+  });
+  andThen(function() {
+      var projectInput = find(".details_section input.project");
+      assert.equal(projectInput.val(), "first");
+  });
+});
+
+test('detail loading screen shown before xhr resolves with no data', function(assert) {
+  stubXhrWithTodos([]);
+  visit('/todo/1');
+  Ember.run(function() {
+      var loading = find(".loading-details-gif");
+      assert.equal(loading.text(), "Loading details...");
+  });
+  andThen(function() {
+      var no_data = find(".no-detail-data-found");
+      assert.equal(no_data.text(), "No detail model data");
+  });
+});

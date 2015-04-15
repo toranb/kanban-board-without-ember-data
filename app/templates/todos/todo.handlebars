@@ -5,11 +5,18 @@
         <span class="card_title">
           <h4>Details</h4>
           <hr />
-
-          <div class="form-group">
-            <label for="project">Project</label>
-            {{input class="form-control project" id="project" name="project" value=model.project}}
-          </div>
+          {{#if controller.isLoaded}}
+            {{#if controller.content}}
+              <div class="form-group">
+                <label for="project">Project</label>
+                {{input class="form-control project" id="project" name="project" value=model.project}}
+              </div>
+            {{else}}
+              <div class="no-detail-data-found"><h2>No detail model data</h2></div>
+            {{/if}}
+          {{else}}
+              <div class="loading-details-gif"><h2>Loading details...</h2></div>
+          {{/if}}
         </span>
       </div>
     </div>
