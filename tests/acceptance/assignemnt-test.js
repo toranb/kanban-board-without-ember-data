@@ -95,7 +95,7 @@ test("clicking toggle will show details for given item", function(assert) {
 
 test('loading screen shown before xhr resolves with valid data', function(assert) {
   stubXhrWithTodos(json);
-  visit('/');
+  visitSync('/');
   Ember.run(function() {
       var loading = find(".loading-gif");
       assert.equal(loading.text(), "Loading...");
@@ -108,7 +108,7 @@ test('loading screen shown before xhr resolves with valid data', function(assert
 
 test('loading screen shown before xhr resolves with no data', function(assert) {
   stubXhrWithTodos([]);
-  visit('/');
+  visitSync('/');
   Ember.run(function() {
       var loading = find(".loading-gif");
       assert.equal(loading.text(), "Loading...");
@@ -121,7 +121,7 @@ test('loading screen shown before xhr resolves with no data', function(assert) {
 
 test('detail loading screen shown before xhr resolves with valid data', function(assert) {
   stubXhrWithTodos(json);
-  visit('/todo/1');
+  visitSync('/todo/1');
   Ember.run(function() {
       var loading = find(".loading-details-gif");
       assert.equal(loading.text(), "Loading details...");
@@ -134,7 +134,7 @@ test('detail loading screen shown before xhr resolves with valid data', function
 
 test('detail loading screen shown before xhr resolves with no data', function(assert) {
   stubXhrWithTodos([]);
-  visit('/todo/1');
+  visitSync('/todo/1');
   Ember.run(function() {
       var loading = find(".loading-details-gif");
       assert.equal(loading.text(), "Loading details...");

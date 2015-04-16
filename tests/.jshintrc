@@ -9,6 +9,7 @@
     "define",
     "console",
     "visit",
+    "visitSync",
     "exists",
     "fillIn",
     "click",
