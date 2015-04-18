@@ -11,6 +11,7 @@ export default Ember.Object.extend({
     findAll: function() {
         var store = this.get("store");
         var all = store.find("todo");
+        all.set('isLoaded', false);
         PromiseMixin.xhr("/api/todos").then(function(response) {
             response.forEach(function(data) {
                 store.push("todo", data);
@@ -27,5 +28,17 @@ export default Ember.Object.extend({
             return store.find("todo", id);
         }
         return record;
+    },
+    findNotesForTodo: function(id) {
+        var store = this.get("store");
+        var all = store.find("note");
+        all.set('isLoaded', false);
+        PromiseMixin.xhr("/api/todos/%@/notes".fmt(id)).then(function(response) {
+            response.forEach(function(data) {
+                store.push("note", data);
+            });
+            all.set('isLoaded', true);
+        });
+        return all;
     }
 });

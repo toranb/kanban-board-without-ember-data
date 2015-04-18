@@ -24,11 +24,16 @@
       var third =  {id: 3, status_code: 1, project: 'third'};
       var last =   {id: 4, status_code: 2, project: 'last'};
       var todos = [first, second, third, last];
-      $.fauxjax.new({
-        url: "/api/todos",
-        responseText: todos,
-        responseTime: 900
-      });
+      var getNotes = function() { return [{id: 9, title: "first"}, {id: 8, title: "second"}, {id: 7, title: "third"}]; }
+      var firstNotes = getNotes();
+      var secondNotes = getNotes();
+      var thirdNotes = getNotes();
+      var lastNotes = getNotes();
+      $.fauxjax.new({ url: "/api/todos", responseText: todos, responseTime: 900 });
+      $.fauxjax.new({ url: "/api/todos/1/notes", responseText: firstNotes, responseTime: 1300 });
+      $.fauxjax.new({ url: "/api/todos/2/notes", responseText: secondNotes, responseTime: 1300 });
+      $.fauxjax.new({ url: "/api/todos/3/notes", responseText: thirdNotes, responseTime: 1300 });
+      $.fauxjax.new({ url: "/api/todos/4/notes", responseText: lastNotes, responseTime: 1300 });
     </script>
     <script src="assets/kanban.js"></script>
 
