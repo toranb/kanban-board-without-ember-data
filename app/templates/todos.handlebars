@@ -10,7 +10,7 @@
     <div class="container card_project">
       <div class="row">
         <div class="pull-left">
-          <div class="todo_project">{{#link-to "todos.todo" todo class="toggle_link"}}{{todo.project}}{{/link-to}}</div>
+          <div class="todo_project">{{#link-to "todos.todo" todo.id class="toggle_link"}}{{todo.project}}{{/link-to}}</div>
           <div class="todo_task">{{todo.task}}</div>
           <div><span {{bind-attr class=todo.status_class}}><span class="todo_status">{{todo.status}}</span></span>
           <span class="assign_btn label label-primary" {{action 'assign' todo}}>&#43;</span></div>
@@ -36,7 +36,7 @@
     <div class="container card_project">
       <div class="row">
         <div class="pull-left">
-          <div class="todo_project">{{#link-to "todos.todo" todo class="toggle_link"}}{{todo.project}}{{/link-to}}</div>
+          <div class="todo_project">{{#link-to "todos.todo" todo.id class="toggle_link"}}{{todo.project}}{{/link-to}}</div>
           <div class="todo_task">{{todo.task}}</div>
           <div><span {{bind-attr class=todo.status_class}}><span class="todo_status">{{todo.status}}</span></span></div>
         </div>
