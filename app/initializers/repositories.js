@@ -7,6 +7,6 @@ export function initialize(container, application) {
 
 export default {
     name: "repositories",
-    after: "store",
+    after: "simple-store",
     initialize: initialize
 };
